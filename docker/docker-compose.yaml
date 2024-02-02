@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  database:
+    container_name: pg_volley
+    image: postgres:12-alpine
+    restart: on-failure
+    ports:
+      - "${VOLLEY_DB_PORT:-5434}:5432"
+    environment:
+      POSTGRES_USER: ${VOLLEY_DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${VOLLEY_DB_PASSWORD:-root}
+      POSTGRES_DB: ${VOLLEY_DB_NAME:-volley_db}
